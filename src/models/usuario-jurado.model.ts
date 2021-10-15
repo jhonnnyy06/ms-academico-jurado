@@ -1,7 +1,18 @@
 import {Entity, model, property, belongsTo} from '@loopback/repository';
 import {Jurado} from './jurado.model';
 
-@model()
+@model({
+  settings: {
+    foreignKeys: {
+      fk_usuario_id_jurado: {
+        name: 'fk_usuario_id_jurado',
+        entity: 'Jurado',
+        entityKey: 'id',
+        foreignKey: 'id_jurado',
+      }
+    },
+  },
+})
 export class UsuarioJurado extends Entity {
   @property({
     type: 'number',
